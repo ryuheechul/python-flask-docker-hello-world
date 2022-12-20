@@ -5,8 +5,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Flask inside Docker!!"
+    sum = 1 + 2
 
+    return f"Hello, Flask inside Docker - sum: {sum}"
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

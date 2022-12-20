@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: ./
+    ports:
+      - "5000:5000"
+      - "5678:5678"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      # Turns off buffering for easier container logging
+      - PYTHONUNBUFFERED=1
+    # I see the breakpoint works even without these but may be these are meaningful in some ways?
+    # advised from https://github.com/mfussenegger/nvim-dap/wiki/Local-and-Remote-Debugging-with-Docker#Docker-Security-Settings
+    security_opt:
+      - seccomp:unconfined
+    cap_add:
+      - SYS_PTRACE

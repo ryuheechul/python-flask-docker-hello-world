@@ -3,13 +3,19 @@
 Build the image using the following command
 
 ```bash
-$ docker build -t simple-flask-app:latest .
+$ make build
 ```
 
 Run the Docker container using the command shown below.
 
 ```bash
-$ docker run -d -p 5000:5000 simple-flask-app
+$ make [run]
 ```
 
-The application will be accessible at http:127.0.0.1:5000 or if you are using boot2docker then first find ip address using `$ boot2docker ip` and the use the ip `http://<host_ip>:5000`
+Make a request by
+
+```bash
+$ curl localhost:5000
+```
+
+`debugpy` will listen at `5678` which is brought by https://github.com/shekhargulati/python-flask-docker-hello-world/compare/master...ryuheechul:python-flask-docker-hello-world:master
