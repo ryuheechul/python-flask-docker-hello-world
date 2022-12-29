@@ -5,8 +5,6 @@ services:
     ports:
       - "5000:5000"
       - "5678:5678"
-    volumes:
-      - .:/app
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       # Turns off buffering for easier container logging
@@ -17,3 +15,10 @@ services:
       - seccomp:unconfined
     cap_add:
       - SYS_PTRACE
+    volumes:
+      # prepare this as volume so pyright LSP container can access this
+      # so this step is not necessary for DAP to work
+      - example-site-path:/usr/local/lib/python3.10
+      - .:/app
+volumes:
+  example-site-path:
